@@ -10,7 +10,7 @@ Sovelluksen ominaisuudet:
 - Hoitaja voi jatkaa koronakorotuksen kirjausta, jos esim asiakas tulee 2. vaiheen rokotukseen
 - Lääkäri voi muokata kaikkia tietoja
 - Asiakas voi katsella vain omia tietojaan omilla tunnuksillaan
-- Kantaan voidaan tehdä hakuja (monta rokotusta, missä paikoissa, montako 1. vaiheen, päivämäärä tilasto, yms.)
+- Kantaan voidaan tehdä hakuja (monta rokotusta, missä paikoissa, montako 1. vaiheen, päivämäärä tilasto, yms)
 - Käyttäja ja hänen tiedot voidaan poistaa kannasta
 
 Mahdollisia lisäominaisuuksia:
