@@ -1,0 +1,11 @@
+<h1>Rokotustiedot</h1>
+{% if session.user_id %}
+{% for message in messages %}
+    Nimi: {{ message[0] }} <br>
+    Rokotuspaikka:<br>
+    Rokoteannos<br>
+    Rokotuspäivä:<br>
+{% endfor %}
+{% else %}
+<a href="/login">Kirjaudu sisään</a>
+{% endif %}

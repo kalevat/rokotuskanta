@@ -4,12 +4,16 @@ import messages, users
 
 @app.route("/")
 def index():
-    list = messages.get_list()
-    return render_template("index.html", count=len(list), messages=list)
+    return render_template("index.html")
 
 @app.route("/new")
 def new():
     return render_template("new.html")
+
+@app.route("/search")
+def search():
+    list = messages.get_list()
+    return render_template("search.html", count=len(list), messages=list)
 
 @app.route("/send", methods=["post"])
 def send():

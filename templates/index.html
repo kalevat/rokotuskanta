@@ -1,16 +1,17 @@
-Viestien määrä: {{ count }}
-<hr>
-{% for message in messages %}
-<i>Viesti:</i> {{ message[0] }}
-<p>
-<i>Lähettäjä:</i> {{ message[1] }}
-<p>
-<i>Aika:</i> {{ message[2].strftime("%Y-%m-%d %H:%M:%S") }}
-<hr>
-{% endfor %}
+<h1>Rokotuskanta</h1>
+<h2>Tee valinta</h2>
+
 {% if session.user_id %}
-Olet kirjautunut sisään.
-<a href="/new">Lähetä viesti</a> | <a href="/logout">Kirjaudu ulos</a>
+<a href="/new">Uudet tiedot</a>
+<br>
+<a href="/search">Omat tiedot</a>
+<br>
+<a href="/logout">Kirjaudu ulos</a>
+<br>
 {% else %}
+<a href="/register">Luo uusi käyttäjä</a>
+<br>
 <a href="/login">Kirjaudu sisään</a>
 {% endif %}
+
+
