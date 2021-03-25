@@ -1,15 +1,20 @@
 <h1>Uuden tiedot</h1><br>
 
 <form action="/send" method="post">
-    <label for="nimi">Nimi:</label>
-    <input type="text" id="nimi" name="nimi"><br><br>
-    <label for="rokotuspaikka">Rokotuspaikka:</label>
-    <input type="text" id="rokotuspaikka" name="rokotuspaikka"><br><br>
-    <input type="checkbox" id="rokote1" name="rokote1" value="1">
-    <label for="rokote1">1. rokoteannos</label><br>
-    <input type="checkbox" id="rokote2" name="rokote2" value="1">
-    <label for="rokote2">2. rokoteannos</label><br><br>
-    <label for="start">Rokotuspäivä</label>
-    <input type="date" id="pvm" name="pvm"><br><br>
-<input type="submit" value="Lähetä">
+    <label for="name">Nimi:</label>
+    <input type="text" id="name" name="name"><br><br>
+    <label for="place">Rokotuspaikka:</label>
+    <select name="place" id="place">
+        <option value="Helsinki">Helsinki</option>
+        <option value="Vantaa">Vantaa</option>
+        <option value="Turku">Turku</option>
+    </select> 
+    <br><br>
+    <input type="radio" id="first" name="vacc" value="1" checked="checked">
+    <label for="first">1. rokoteannos</label><br>
+    <input type="radio" id="second" name="vacc" value="2">
+    <label for="second">2. rokoteannos</label><br><br>
+    <label for="date">Rokotuspäivä</label>
+    <input type="date" id="date" name="date"><br><br>
+    <input type="submit" value="Lähetä">
 </form>

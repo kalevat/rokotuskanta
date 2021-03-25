@@ -2,15 +2,15 @@ from db import db
 import users
 
 def get_list():
-    sql = "SELECT U.username FROM users U"
+    sql = "SELECT v.id, v.vacc, v.date, p.placename FROM vaccination v INNER JOIN place p ON p.id=v.place_id;"
     result = db.session.execute(sql)
     return result.fetchall()
 
-def send(content):
+def send(name,place,vacc,date):
     user_id = users.user_id()
     if user_id == 0:
         return False
-    sql = "INSERT INTO messages (content, user_id, sent_at) VALUES (:content, :user_id, NOW())"
-    db.session.execute(sql, {"content":content, "user_id":user_id})
+    sql = "INSERT INTO vaccination (vacc, place_id, date) VALUES (:vacc, (SELECT id FROM place WHERE placename=:place), :date)"
+    db.session.execute(sql, {"vacc":vacc, "place":place, "date":date})
     db.session.commit()
     return True

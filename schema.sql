@@ -1,11 +1,18 @@
-CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
-    username TEXT UNIQUE,
-    password TEXT
+CREATE TABLE place (
+	id SERIAL PRIMARY KEY,
+	placename TEXT
 );
-CREATE TABLE messages (
-    id SERIAL PRIMARY KEY,
-    content TEXT,
-    user_id INTEGER REFERENCES users,
-    sent_at TIMESTAMP
+INSERT INTO place (placename) VALUES ('Helsinki'),('Turku'),('Vantaa');
+CREATE TABLE vaccination (
+	id SERIAL PRIMARY KEY,
+	vacc INT,
+	date TIMESTAMP,
+	place_id INTEGER REFERENCES place
+);
+CREATE TABLE users (
+	id SERIAL PRIMARY KEY,
+	username TEXT UNIQUE,
+	password TEXT,
+	rights INT,
+	vaccination_id INTEGER REFERENCES vaccination
 );

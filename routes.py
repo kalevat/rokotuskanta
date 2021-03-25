@@ -17,8 +17,11 @@ def search():
 
 @app.route("/send", methods=["post"])
 def send():
-    content = request.form["content"]
-    if messages.send(content):
+    name = request.form["name"]
+    place = request.form["place"]
+    vacc = request.form["vacc"]
+    date = request.form["date"]
+    if messages.send(name,place,vacc,date):
         return redirect("/")
     else:
         return render_template("error.html",message="Viestin lähetys ei onnistunut")
