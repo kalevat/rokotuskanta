@@ -1,18 +1,19 @@
-<h1>Uuden tiedot</h1><br>
+<title>Rokotustiedot</title>
+<h1>Uudet tiedot</h1><br>
 
 <form action="/send" method="post">
     <label for="name">Nimi:</label>
     <select name="name" id="name">
-        <option value="tomi">tomi</option>
-        <option value="heikki">heikki</option>
-        <option value="jussi">jussi</option>
+        {% for list_users in list_users %}
+            <option value="{{ list_users[0] }}">{{ list_users[0] }}</option>
+        {% endfor %}
     </select>
     <br><br>
     <label for="place">Rokotuspaikka:</label>
     <select name="place" id="place">
-        <option value="Helsinki">Helsinki</option>
-        <option value="Vantaa">Vantaa</option>
-        <option value="Turku">Turku</option>
+        {% for list_places in list_places %}
+            <option value="{{ list_places[0] }}">{{ list_places[00] }}</option>
+        {% endfor %}
     </select> 
     <br><br>
     <input type="radio" id="first" name="vacc" value="1" checked="checked">

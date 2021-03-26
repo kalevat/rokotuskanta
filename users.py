@@ -24,6 +24,9 @@ def register(username,password):
         sql = "INSERT INTO users (username,password) VALUES (:username,:password)"
         db.session.execute(sql, {"username":username,"password":hash_value})
         db.session.commit()
+        sql2 = "insert into vaccination (user_id) values ((select id from users where username=:username))"
+        db.session.execute(sql2, {"username":username})
+        db.session.commit()
     except:
         return False
     return login(username,password)

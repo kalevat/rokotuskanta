@@ -4,6 +4,13 @@ CREATE TABLE place (
 );
 INSERT INTO place (placename) VALUES ('Helsinki'),('Turku'),('Vantaa');
 
+CREATE TABLE users (
+	id SERIAL PRIMARY KEY,
+	username TEXT UNIQUE,
+	password TEXT,
+	rights INT
+);
+
 CREATE TABLE vaccination (
 	id SERIAL PRIMARY KEY,
 	vacc INT,
@@ -11,9 +18,4 @@ CREATE TABLE vaccination (
 	place_id INTEGER REFERENCES place,
 	user_id INTEGER REFERENCES users
 );
-CREATE TABLE users (
-	id SERIAL PRIMARY KEY,
-	username TEXT UNIQUE,
-	password TEXT,
-	rights INT
-);
+

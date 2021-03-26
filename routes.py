@@ -8,12 +8,14 @@ def index():
 
 @app.route("/new")
 def new():
-    return render_template("new.html")
+    list_users = messages.get_users()
+    list_places = messages.get_places() 
+    return render_template("new.html", count=len(list_users), list_users=list_users, list_places=list_places)
 
 @app.route("/search")
 def search():
-    list = messages.get_list()
-    return render_template("search.html", count=len(list), messages=list)
+    list_vacc = messages.get_vacc()
+    return render_template("search.html", count=len(list_vacc), list_vacc=list_vacc)
 
 @app.route("/send", methods=["post"])
 def send():
