@@ -2,7 +2,12 @@
 
 <form action="/send" method="post">
     <label for="name">Nimi:</label>
-    <input type="text" id="name" name="name"><br><br>
+    <select name="name" id="name">
+        <option value="tomi">tomi</option>
+        <option value="heikki">heikki</option>
+        <option value="jussi">jussi</option>
+    </select>
+    <br><br>
     <label for="place">Rokotuspaikka:</label>
     <select name="place" id="place">
         <option value="Helsinki">Helsinki</option>
