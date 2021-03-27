@@ -1,0 +1,9 @@
+<title>Hallintasivu</title>
+<h1>Hallintasivu</h1>
+{% if session.user_id %}
+<form action="/tools" method="post">
+    <label for="place">Uusi rokotuspaikka: </label>
+    <input type="text" id="place" name="place"><br><br>
+    <input type="submit" value="Lähetä">
+</form>
+{% endif %}

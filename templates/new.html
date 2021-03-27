@@ -20,6 +20,13 @@
     <label for="first">1. rokoteannos</label><br>
     <input type="radio" id="second" name="vacc" value="2">
     <label for="second">2. rokoteannos</label><br><br>
+    <label for="place">Rokotuspaikka:</label>
+    <select name="vaccname" id="vaccname">
+        {% for list_vacc in list_vacc %}
+            <option value="{{ list_vacc[0] }}">{{ list_vacc[00] }}</option>
+        {% endfor %}
+    </select>
+    <br><br>
     <label for="date">Rokotuspäivä</label>
     <input type="date" id="date" name="date"><br><br>
     <input type="submit" value="Lähetä">

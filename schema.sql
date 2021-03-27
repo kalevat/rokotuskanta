@@ -1,6 +1,6 @@
 CREATE TABLE place (
 	id SERIAL PRIMARY KEY,
-	placename TEXT
+	placename TEXT UNIQUE
 );
 INSERT INTO place (placename) VALUES ('Helsinki'),('Turku'),('Vantaa');
 
@@ -15,7 +15,19 @@ CREATE TABLE vaccination (
 	id SERIAL PRIMARY KEY,
 	vacc INT,
 	date TIMESTAMP,
+	vacc_id INT,
 	place_id INTEGER REFERENCES place,
 	user_id INTEGER REFERENCES users
 );
 
+CREATE TABLE rights (
+	id SERIAL PRIMARY KEY,
+	description TEXT
+);
+
+CREATE TABLE vaccine (
+	id SERIAL PRIMARY KEY,
+	vaccname TEXT
+);
+
+INSERT INTO vaccine (vaccname) VALUES ('Pfizer'), ('Johson&Johnson'), ('Moderna'), ('AstraZeneca'), ('Sputnik');

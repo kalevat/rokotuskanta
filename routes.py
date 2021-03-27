@@ -9,8 +9,9 @@ def index():
 @app.route("/new")
 def new():
     list_users = messages.get_users()
-    list_places = messages.get_places() 
-    return render_template("new.html", count=len(list_users), list_users=list_users, list_places=list_places)
+    list_places = messages.get_places()
+    list_vacc = messages.get_vaccname() 
+    return render_template("new.html", count=len(list_users), list_users=list_users, list_places=list_places, list_vacc=list_vacc)
 
 @app.route("/search")
 def search():
@@ -23,7 +24,8 @@ def send():
     place = request.form["place"]
     vacc = request.form["vacc"]
     date = request.form["date"]
-    if messages.send(name,place,vacc,date):
+    vaccname = request.form["vaccname"]
+    if messages.send(name,place,vacc,date,vaccname):
         return redirect("/")
     else:
         return render_template("error.html",message="Viestin lähetys ei onnistunut")
@@ -56,3 +58,15 @@ def register():
             return redirect("/")
         else:
             return render_template("error.html",message="Rekisteröinti ei onnistunut")
+
+@app.route("/tools", methods=["get","post"])
+def place():
+    if request.method == "GET":
+        return render_template("tools.html")
+    if request.method == "POST":
+        place = request.form["place"]
+        if messages.update_place(place):
+            return redirect("/")
+        else:
+            return render_template("error.html",message="Rekisteröinti ei onnistunut")
+    

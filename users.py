@@ -21,10 +21,10 @@ def logout():
 def register(username,password):
     hash_value = generate_password_hash(password)
     try:
-        sql = "INSERT INTO users (username,password) VALUES (:username,:password)"
+        sql = "INSERT INTO users (username,password, rights) VALUES (:username,:password,1)"
         db.session.execute(sql, {"username":username,"password":hash_value})
         db.session.commit()
-        sql2 = "insert into vaccination (user_id) values ((select id from users where username=:username))"
+        sql2 = "INSERT INTO vaccination (user_id) VALUES ((SELECT id FROM users WHERE username=:username))"
         db.session.execute(sql2, {"username":username})
         db.session.commit()
     except:
