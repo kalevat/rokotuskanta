@@ -1,4 +1,4 @@
-# rokotuskanta
+# Rokotuskanta
 Tietokantasovellus kurssin harjoitustehtävä / Rokotuskanta
 
 Sovellus, johon hoitajat kirjaavat asiakkaille annetut koronarokotukset. Lääkärit voivat muokata tietoja. Asiakkaat itse voivat vain katsoa omia tietojaan.
@@ -16,3 +16,26 @@ Sovelluksen ominaisuudet:
 Mahdollisia lisäominaisuuksia:
 - asiakas voi antaa palautetta rokotustilanteesta
 - asiakas voi tulostaa itselleen rokotustodistuksen
+
+## Välipalautus 2
+
+Ohjelma on testavissa osoitteessa https://rokotuskanta.herokuapp.com/
+
+Käyttöohjeet:
+- Luo uusi käyttäjä
+- Kirjaudu sisään
+- Lisää rokotustiedot
+- Katsele rokotusrekisteriä
+
+Välipalautuksen tilanne:
+- Ohjelman päätoiminnallisuudet on toteutettu (rekisteröinti, kirjautuminen, tietojen lisäys, tietojen selaus, hallintasivu)
+- Tietokannan rakenne valmiina
+- Käyttäjäoikeuksia ei ole toteutettu, kaikilla käyttäjille täydet oikeudet
+
+Seuraavaksi toteutettavat toiminnallisuudet:
+- Sivujen ulkoasu
+- Käyttäoikeuksien toteutus
+- Tietojen muutos -sivun toteutus
+- Hallintasivun jatkokehitys
+- Käyttäjien poistaminen
+- Raportointi -sivun toteutus
