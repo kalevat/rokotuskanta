@@ -20,6 +20,8 @@ def logout():
 
 def register(username,password):
     hash_value = generate_password_hash(password)
+    if username=="" or password=="":
+        return False
     try:
         sql = "INSERT INTO users (username,password, rights) VALUES (:username,:password,1)"
         db.session.execute(sql, {"username":username,"password":hash_value})
