@@ -6,4 +6,15 @@
     <input type="text" id="place" name="place"><br><br>
     <input type="submit" value="Lähetä">
 </form>
+
+<form action="/remove" method="post">
+    <label for="name">Poista käyttäjä: </label>
+    <select name="name" id="name">
+        {% for list_users in list_users %}
+            <option value="{{ list_users[0] }}">{{ list_users[0] }}</option>
+        {% endfor %}
+    </select>
+    <br><br>
+    <input type="submit" value="Lähetä">
+</form>
 {% endif %}

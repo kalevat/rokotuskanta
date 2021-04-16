@@ -16,7 +16,6 @@ def get_vaccname():
     result = db.session.execute(sql)
     return result.fetchall()
 
-
 def get_vacc():
     sql = "SELECT u.username, v.vacc, v.date, p.placename, c.vaccname FROM vaccination v INNER JOIN place p ON p.id=v.place_id INNER JOIN users u ON u.id=v.user_id INNER JOIN vaccine c ON c.id=v.vacc_id"
     result = db.session.execute(sql)
@@ -35,6 +34,17 @@ def update_place(place):
     try:
         sql = "INSERT INTO place (placename) VALUES (:place)"
         db.session.execute(sql, {"place":place})
+        db.session.commit()
+    except:
+        return False
+    return True
+
+def remove_name(name):
+    try:
+        sql = "delete from vaccination where user_id = (select id from users where username = :name)"
+        db.session.execute(sql, {"name":name})
+        sql = "delete from users where username = :name"
+        db.session.execute(sql, {"name":name})
         db.session.commit()
     except:
         return False

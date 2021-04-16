@@ -61,8 +61,9 @@ def register():
 
 @app.route("/tools", methods=["get","post"])
 def place():
+    list_users = messages.get_users()
     if request.method == "GET":
-        return render_template("tools.html")
+        return render_template("tools.html",list_users=list_users)
     if request.method == "POST":
         place = request.form["place"]
         if messages.update_place(place):
@@ -70,3 +71,13 @@ def place():
         else:
             return render_template("error.html",message="Rekisteröinti ei onnistunut")
     
+@app.route("/remove", methods=["get","post"])
+def remove():
+    if request.method == "GET":
+        return render_template("tools.html")
+    if request.method == "POST":
+        name = request.form["name"]
+        messages.remove_name(name)
+        return redirect("/")
+    else:
+        return render_template("error.html",message="Poisto ei onnistunut") 
