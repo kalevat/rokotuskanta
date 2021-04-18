@@ -1,4 +1,7 @@
-<title>Kirjautuminen</title>
+{% extends "layout.html" %}
+{% block title %}Kirjautuminen{% endblock %}
+{% block content %}
+<br>
 <form action="/login" method="post">
     Tunnus: <input type="text" name="username">
     <p>
@@ -6,3 +9,4 @@
     <p>
     <input type="submit" value="Kirjaudu">
 </form>
+{% endblock %}

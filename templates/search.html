@@ -1,6 +1,8 @@
-<title>Rokotusrekisteri</title>
-<h1>Rokotusrekisteri</h1>
+{% extends "layout.html" %}
+{% block title %}Rokotusrekisteri{% endblock %}
+{% block content %}
 {% if session.user_id %}
+<br>
 {% for list_vacc in list_vacc %}
     Nimi: {{ list_vacc[0] }} <br>
     Rokotuspaikka: {{ list_vacc[3] }}<br>
@@ -9,7 +11,9 @@
     Rokotenimi: {{ list_vacc[4] }}<br>
     * * * * * <br>
     {% endfor %}
-<button onclick="document.location='/'">Takaisin</button>
 {% else %}
-<a href="/login">Kirjaudu sisään</a>
+    <br>
+    Et ole vielä kirjautunut sisään
+    <br>
 {% endif %}
+{% endblock %}

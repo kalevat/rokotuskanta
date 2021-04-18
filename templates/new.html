@@ -1,6 +1,8 @@
-<title>Rokotustiedot</title>
-<h1>Uudet tiedot</h1><br>
-
+{% extends "layout.html" %}
+{% block title %}Uudet tiedot{% endblock %}
+{% block content %}
+{% if session.user_id %}
+<br>
 <form action="/send" method="post">
     <label for="name">Nimi:</label>
     <select name="name" id="name">
@@ -35,3 +37,9 @@
     <br><br>
     <input type="submit" value="Lähetä">
 </form>
+{% else %}
+    <br>
+    Et ole vielä kirjautunut sisään
+    <br>
+{% endif %}
+{% endblock %}

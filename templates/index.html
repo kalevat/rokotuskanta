@@ -1,20 +1,22 @@
-<title>Rokotuskanta</title>
-<h1>Rokotuskanta</h1>
-<h2>Tee valinta</h2>
-
-{% if session.user_id %}
-<a href="/new">Uudet tiedot</a>
-<br>
-<a href="/search">Rokotusrekisteri</a>
-<br>
-<a href="/tools">Hallintasivu</a>
-<br>
-<a href="/logout">Kirjaudu ulos</a>
-<br>
-{% else %}
-<a href="/register">Luo uusi käyttäjä</a>
-<br>
-<a href="/login">Kirjaudu sisään</a>
-{% endif %}
-
+{% extends "layout.html" %}
+{% block title %}Etusivu{% endblock %}
+{% block content %}
+    {% if session.user_id %}
+        <br>
+        <h2>Pääsivu</h2>
+        Rokotuskanta ohjelmalla voi hallinnoida koronarokotuksia<br>
+        - Kirjata rokotuksia<br>
+        - Korjata kirjauksia<br>
+        - Katsella rokotusrekisterin tietoja<br>
+        - Tulostaa raportteja<br>
+        - Hallita ohjelman tietoa<br>
+        <br>
+        Osa ohjelman toiminnallisuuksista on vielä kesken
+        <br>  
+    {% else %}
+        <br>
+        Et ole vielä kirjautunut sisään
+        <br>
+    {% endif %}
+{% endblock %}
 

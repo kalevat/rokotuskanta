@@ -1,12 +1,14 @@
-<title>Hallintasivu</title>
-<h1>Hallintasivu</h1>
+{% extends "layout.html" %}
+{% block title %}Hallintasivu{% endblock %}
+{% block content %}
 {% if session.user_id %}
+<br>
 <form action="/tools" method="post">
     <label for="place">Uusi rokotuspaikka: </label>
     <input type="text" id="place" name="place"><br><br>
     <input type="submit" value="Lähetä">
 </form>
-
+<br>
 <form action="/remove" method="post">
     <label for="name">Poista käyttäjä: </label>
     <select name="name" id="name">
@@ -17,4 +19,9 @@
     <br><br>
     <input type="submit" value="Lähetä">
 </form>
+{% else %}
+    <br>
+    Et ole vielä kirjautunut sisään
+    <br>
 {% endif %}
+{% endblock %}

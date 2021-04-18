@@ -46,7 +46,7 @@ def login():
 def logout():
     users.logout()
     return redirect("/")
-
+    
 @app.route("/register", methods=["get","post"])
 def register():
     if request.method == "GET":
@@ -80,4 +80,4 @@ def remove():
         messages.remove_name(name)
         return redirect("/")
     else:
-        return render_template("error.html",message="Poisto ei onnistunut") 
+        return render_template("error.html",message="Poisto ei onnistunut")

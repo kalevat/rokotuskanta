@@ -1,8 +1,12 @@
-<title>Rekisteröinti</title>
-<form action="/register" method="post">
-Tunnus: <input type="text" name="username">
-<p>
-Salasana: <input type="password" name="password">
-<p>
-<input type="submit" value="Luo tunnus">
-</form>
+{% extends "layout.html" %}
+{% block title %}Rekisteröinti{% endblock %}
+{% block content %}
+    <br>
+    <form action="/register" method="post">
+    Tunnus: <input type="text" name="username">
+    <p>
+    Salasana: <input type="password" name="password">
+    <p>
+    <input type="submit" value="Luo tunnus">
+    </form>
+{% endblock %}

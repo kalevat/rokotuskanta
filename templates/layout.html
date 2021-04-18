@@ -1,0 +1,54 @@
+<!doctype html>
+<title>Rokotuskanta - {% block title %}{% endblock %}</title>
+<h1><a href="/" style="color:black; text-decoration: none;">Rokotuskanta</a></h1>
+<style>
+    body {
+      background-image: url('/static/img/virus.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+    
+    li {
+      float: left;
+    }
+    
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    
+    li a:hover:not(.active) {
+      background-color: #111;
+    }
+    
+    .active {
+      background-color: #4CAF50;
+    }
+</style>
+</head>
+    <ul>
+      {% if session.user_id %}
+        <li><a href="/new">Uudet tiedot</a></li>
+        <li><a href="/search">Rokotusrekisteri</a></li>
+        <li><a href="/tools">Hallintasivu</a></li>
+        <li><a href="/report">Hallintasivu</a></li>
+        <li><a href="/logout">Kirjaudu ulos</a></li>
+      {% else %}
+        <li><a href="/login">Kirjaudu sisään</a></li>
+        <li><a href="/register">Luo käyttäjätunnus</a></li>
+      {% endif %}
+    </ul>
+{% block content %}{% endblock %}
+<br>
+<hr>
+Sivun on tuottanut Vaccination Database Ltd &copy; 
