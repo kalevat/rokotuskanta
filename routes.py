@@ -1,14 +1,10 @@
-#from app import app
+from app import app
 from flask import render_template, request, redirect
-import messages
-import users
-import random
-
+import messages, users, random
 
 @app.route("/")
 def index():
     return render_template("index.html")
-
 
 @app.route("/new")
 def new():
@@ -17,12 +13,10 @@ def new():
     list_vacc = messages.get_vaccname()
     return render_template("new.html", count=len(list_users), list_users=list_users, list_places=list_places, list_vacc=list_vacc)
 
-
 @app.route("/search")
 def search():
     list_vacc = messages.get_vacc()
     return render_template("search.html", count=len(list_vacc), list_vacc=list_vacc)
-
 
 @app.route("/send", methods=["post"])
 def send():
@@ -36,7 +30,6 @@ def send():
     else:
         return render_template("error.html", message="Viestin lähetys ei onnistunut")
 
-
 @app.route("/login", methods=["get", "post"])
 def login():
     if request.method == "GET":
@@ -49,12 +42,10 @@ def login():
         else:
             return render_template("error.html", message="Väärä tunnus tai salasana")
 
-
 @app.route("/logout")
 def logout():
     users.logout()
     return redirect("/")
-
 
 @app.route("/register", methods=["get", "post"])
 def register():
@@ -68,7 +59,6 @@ def register():
         else:
             return render_template("error.html", message="Rekisteröinti ei onnistunut")
 
-
 @app.route("/tools", methods=["get", "post"])
 def place():
     list_users = messages.get_users()
@@ -81,7 +71,6 @@ def place():
         else:
             return render_template("error.html", message="Rekisteröinti ei onnistunut")
 
-
 @app.route("/remove", methods=["get", "post"])
 def remove():
     if request.method == "GET":
@@ -92,7 +81,6 @@ def remove():
         return redirect("/")
     else:
         return render_template("error.html", message="Poisto ei onnistunut")
-
 
 @app.route("/report", methods=["get", "post"])
 def report():
