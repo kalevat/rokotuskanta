@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block title %}Raportit{% endblock %}
+{% block content %}
+{% if session.user_id %}
+    <br>
+    <style>
+        #myProgress {
+          width: 100%;
+          background-color: #ddd;
+        }
+        
+        #myBar {
+          width: {{calc_part}}%;
+          height: 30px;
+          background-color: #4CAF50;
+          text-align: center;
+          line-height: 30px;
+          color: white;
+        }
+        * {box-sizing: border-box}
+
+        .container {
+        width: 100%;
+        background-color: #ddd;
+        }
+
+        .skills {
+        text-align: right;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: white;
+        }
+        {% for s in range(0,vacc_len) %}
+            .color{{s}} {width: {{vacc_total[s]}}%; background-color: {{color_list[s]}};}
+        {% endfor %}
+        </style>
+        <body>
+        <h2>Rokotettujen osuus käyttäjistä</h2>
+        <div id="myProgress">
+          <div id="myBar">{{calc_part}}%</div>
+        </div>
+    <br>
+        {% for s in range(0,vacc_len) %}
+            <h3>{{vacc_names[s]}}</h3>
+            <div class="container">
+                <div class="skills color{{s}}">{{vacc_total[s]}}%</div>
+            </div>
+        {% endfor %}
+{% else %}
+    <br>
+    Et ole vielä kirjautunut sisään
+    <br>
+{% endif %}
+{% endblock %}

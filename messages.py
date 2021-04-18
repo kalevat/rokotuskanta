@@ -50,3 +50,17 @@ def remove_name(name):
         return False
     return True
 
+def get_vacc_users():
+    sql = "select count(vacc) from vaccination;"
+    result = db.session.execute(sql)
+    return result.fetchall()[0][0]
+
+def get_total_users():
+    sql = "select count(id) from users;"
+    result = db.session.execute(sql)
+    return result.fetchall()[0][0]
+
+def get_vacc_total():
+    sql = "select c.vaccname, count(*) from vaccination v, vaccine c where c.id=v.vacc_id group by c.vaccname;"
+    result = db.session.execute(sql)
+    return result.fetchall()

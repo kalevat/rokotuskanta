@@ -30,4 +30,4 @@ CREATE TABLE vaccine (
 	vaccname TEXT
 );
 
-INSERT INTO vaccine (vaccname) VALUES ('Pfizer'), ('Johson&Johnson'), ('Moderna'), ('AstraZeneca'), ('Sputnik');
+INSERT INTO vaccine (vaccname) VALUES ('Pfizer'), ('Johnson&Johnson'), ('Moderna'), ('AstraZeneca'), ('Sputnik');
