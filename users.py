@@ -1,6 +1,7 @@
 from db import db
 from flask import session
 from werkzeug.security import check_password_hash, generate_password_hash
+import messages
 
 
 def login(username, password):
@@ -12,6 +13,7 @@ def login(username, password):
     else:
         if check_password_hash(user[0], password):
             session["user_id"] = user[1]
+            session["rights"] = messages.get_rights(user[1])
             return True
         else:
             return False
@@ -26,7 +28,7 @@ def register(username, password):
     if username == "" or password == "":
         return False
     try:
-        sql = "INSERT INTO users (username,password, rights) VALUES (:username,:password,1)"
+        sql = "INSERT INTO users (username,password, rights) VALUES (:username,:password,3)"
         db.session.execute(sql, {"username": username, "password": hash_value})
         db.session.commit()
         sql2 = "INSERT INTO vaccination (user_id) VALUES ((SELECT id FROM users WHERE username=:username))"

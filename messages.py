@@ -1,6 +1,6 @@
 from db import db
 import users
-
+from flask import session
 
 def get_users():
     sql = "SELECT username FROM users"
@@ -21,8 +21,13 @@ def get_vaccname():
 
 
 def get_vacc():
-    sql = "SELECT u.username, v.vacc, v.date, p.placename, c.vaccname FROM vaccination v INNER JOIN place p ON p.id=v.place_id INNER JOIN users u ON u.id=v.user_id INNER JOIN vaccine c ON c.id=v.vacc_id"
-    result = db.session.execute(sql)
+    if session["rights"]==3:
+        user_id=session["user_id"]
+        sql = "SELECT u.username, v.vacc, v.date, p.placename, c.vaccname FROM vaccination v INNER JOIN place p ON p.id=v.place_id INNER JOIN users u ON u.id=v.user_id INNER JOIN vaccine c ON c.id=v.vacc_id WHERE u.username=(select username from users where id=:user_id)"
+        result = db.session.execute(sql, {"user_id": user_id})
+    else:
+        sql = "SELECT u.username, v.vacc, v.date, p.placename, c.vaccname FROM vaccination v INNER JOIN place p ON p.id=v.place_id INNER JOIN users u ON u.id=v.user_id INNER JOIN vaccine c ON c.id=v.vacc_id"
+        result = db.session.execute(sql)
     return result.fetchall()
 
 
@@ -75,3 +80,8 @@ def get_vacc_total():
     sql = "select c.vaccname, count(*) from vaccination v, vaccine c where c.id=v.vacc_id group by c.vaccname;"
     result = db.session.execute(sql)
     return result.fetchall()
+
+def get_rights(user_id):
+    sql = "select rights from users where id=:user_id"
+    result = db.session.execute(sql, {"user_id": user_id})
+    return result.fetchall()[0][0]
