@@ -8,7 +8,7 @@
     <input type="text" id="place" name="place"><br><br>
     <input type="submit" value="Lähetä">
 </form>
-<br>
+<hr>
 <form action="/remove" method="post">
     <label for="name">Poista käyttäjä: </label>
     <select name="name" id="name">
@@ -17,6 +17,24 @@
         {% endfor %}
     </select>
     <br><br>
+    <input type="submit" value="Lähetä">
+</form>
+<hr>
+<form action="/rights" method="post">
+    <label for="name">Vaihda käyttäjäoikeuksia: </label>
+    <select name="name" id="name">
+        {% for list_users in list_users %}
+            <option value="{{ list_users[0] }}">{{ list_users[0] }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <input type="radio" id="doctor" name="rights" value="1">
+    <label for="doctor">Lääkäri</label><br>
+    <input type="radio" id="nurse" name="rights" value="2">
+    <label for="nurse">Hoitaja</label><br>
+    <input type="radio" id="user" name="rights" value="3">
+    <label for="user">Käyttäjä</label><br>
+    <br>
     <input type="submit" value="Lähetä">
 </form>
 {% if error_code==1 %}

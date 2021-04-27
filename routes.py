@@ -73,6 +73,7 @@ def place():
 
 @app.route("/remove", methods=["get", "post"])
 def remove():
+    list_users = messages.get_users()
     if request.method == "GET":
         return render_template("tools.html")
     if request.method == "POST":
@@ -81,6 +82,20 @@ def remove():
         return redirect("/")
     else:
         return render_template("tools.html", message="Poisto ei onnistunut", error_message=1, list_users=list_users)
+
+@app.route("/rights", methods=["get", "post"])
+def rights():
+    list_users = messages.get_users()
+    if request.method == "GET":
+        return render_template("tools.html")
+    if request.method == "POST":
+        name = request.form["name"]
+        user_rights= request.form["rights"]
+        messages.change_rights(name, user_rights)
+        return redirect("/")
+    else:
+        return render_template("tools.html", message="Muutos ei onnistunut", error_message=1, list_users=list_users)
+
 
 @app.route("/report", methods=["get", "post"])
 def report():

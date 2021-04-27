@@ -85,3 +85,9 @@ def get_rights(user_id):
     sql = "select rights from users where id=:user_id"
     result = db.session.execute(sql, {"user_id": user_id})
     return result.fetchall()[0][0]
+
+def change_rights(name,user_rights):
+    sql = "update users set rights=:user_rights where username=:name"
+    db.session.execute(sql, {"user_rights": user_rights, "name": name})
+    db.session.commit()
+    return True
