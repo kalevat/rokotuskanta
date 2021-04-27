@@ -3,14 +3,25 @@
 {% block content %}
 {% if session.user_id %}
 <br>
+<table>
+    <tr>
+      <th>Nimi</th>
+      <th>Rokotuspaikka</th>
+      <th>Rokoteannoksia</th>
+      <th>Rokotuspäivä</th>
+      <th>Rokotenimi</th>
+    </tr>
+
 {% for list_vacc in list_vacc %}
-    Nimi: {{ list_vacc[0] }} <br>
-    Rokotuspaikka: {{ list_vacc[3] }}<br>
-    Rokoteannoksia: {{ list_vacc[1] }}<br>
-    Rokotuspäivä: {{list_vacc[2].strftime("%d.%m.%Y")}}<br>
-    Rokotenimi: {{ list_vacc[4] }}<br>
-    * * * * * <br>
+    <tr>
+        <td>{{ list_vacc[0] }}</td>
+        <td>{{ list_vacc[3] }}</td>
+        <td>{{ list_vacc[1] }}</td>
+        <td>{{list_vacc[2].strftime("%d.%m.%Y")}}</td>
+        <td>{{ list_vacc[4] }}</td>
+    </tr>
 {% endfor %}
+</table>
 {% else %}
     <br>
     Sinulla ei ole oikeuksia sivulle
