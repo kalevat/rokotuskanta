@@ -28,7 +28,7 @@ def send():
     if messages.send(name, place, vacc, date, vaccname):
         return redirect("/")
     else:
-        return render_template("error.html", message="Viestin lähetys ei onnistunut")
+        return render_template("new.html", message="Viestin lähetys ei onnistunut", error_message=1)
 
 @app.route("/login", methods=["get", "post"])
 def login():
@@ -40,7 +40,7 @@ def login():
         if users.login(username, password):
             return redirect("/")
         else:
-            return render_template("error.html", message="Väärä tunnus tai salasana")
+            return render_template("login.html", message="Väärä tunnus tai salasana", error_code=1)
 
 @app.route("/logout")
 def logout():
@@ -57,7 +57,7 @@ def register():
         if users.register(username, password):
             return redirect("/")
         else:
-            return render_template("error.html", message="Rekisteröinti ei onnistunut")
+            return render_template("register.html", message="Rekisteröinti ei onnistunut", error_code=1)
 
 @app.route("/tools", methods=["get", "post"])
 def place():
@@ -69,7 +69,7 @@ def place():
         if messages.update_place(place):
             return redirect("/")
         else:
-            return render_template("error.html", message="Rekisteröinti ei onnistunut")
+            return render_template("tools.html", message="Rekisteröinti ei onnistunut", error_code=1, list_users=list_users)
 
 @app.route("/remove", methods=["get", "post"])
 def remove():
@@ -80,7 +80,7 @@ def remove():
         messages.remove_name(name)
         return redirect("/")
     else:
-        return render_template("error.html", message="Poisto ei onnistunut")
+        return render_template("tools.html", message="Poisto ei onnistunut", error_message=1, list_users=list_users)
 
 @app.route("/report", methods=["get", "post"])
 def report():
