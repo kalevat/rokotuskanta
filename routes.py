@@ -97,27 +97,25 @@ def rights():
         return render_template("tools.html", message="Muutos ei onnistunut", error_message=1, list_users=list_users)
 
 
-@app.route("/report", methods=["get", "post"])
+@app.route("/report", methods=["get"])
 def report():
-    if request.method == "GET":
-        list_vacc_users = messages.get_vacc_users()
-        list_total_users = messages.get_total_users()
-        calc_part = int(list_vacc_users/list_total_users*100)
-        list_vacc_total = messages.get_vacc_total()
-        vacc_dict = {}
-        vacc_names = []
-        vacc_total = []
-        for t in messages.get_vaccname():
-            vacc_dict[t[0]] = 0
-        for u in list_vacc_total:
-            vacc_dict[u[0]] = u[1]
-        for s in messages.get_vaccname():
-            vacc_names.append(s[0])
-            vacc_total.append(int(vacc_dict[s[0]]/list_vacc_users*100))
+    list_vacc_users = messages.get_vacc_users()
+    list_total_users = messages.get_total_users()
+    calc_part = int(list_vacc_users/list_total_users*100)
+    list_vacc_total = messages.get_vacc_total()
+    vacc_dict = {}
+    vacc_names = []
+    vacc_total = []
+    for t in messages.get_vaccname():
+        vacc_dict[t[0]] = 0
+    for u in list_vacc_total:
+        vacc_dict[u[0]] = u[1]
+    for s in messages.get_vaccname():
+        vacc_names.append(s[0])
+        vacc_total.append(int(vacc_dict[s[0]]/list_vacc_users*100))
 
-        def color():
-            color = "#{:06x}".format(random.randint(0, 0xFFFFFF))
-            return color
-        color_list = [color() for _ in range(0, len(vacc_names))]
-        print(color_list)
-        return render_template("report.html", calc_part=calc_part, vacc_names=vacc_names, vacc_total=vacc_total, vacc_len=len(vacc_names), color_list=color_list)
+    def color():
+        color = "#{:06x}".format(random.randint(0, 0xFFFFFF))
+        return color
+    color_list = [color() for _ in range(0, len(vacc_names))]
+    return render_template("report.html", calc_part=calc_part, vacc_names=vacc_names, vacc_total=vacc_total, vacc_len=len(vacc_names), color_list=color_list)
